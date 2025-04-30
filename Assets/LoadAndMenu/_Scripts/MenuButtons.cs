@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuButtons : MonoBehaviour
 {
@@ -61,6 +62,17 @@ public class MenuButtons : MonoBehaviour
 #elif UNITY_ANDROID
         Application.Quit();
 #endif
+    }
+
+    public void OpenNewGame()
+    {
+        StartCoroutine(ClickAndLoadScene());
+    }
+
+    private IEnumerator ClickAndLoadScene()
+    {
+        yield return new WaitForSeconds(0.25f);
+        SceneManager.LoadScene("MainScene");
     }
 
     private IEnumerator SwitchWindows(GameObject toDisable, bool disableState, GameObject toEnable, bool enableState)
