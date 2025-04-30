@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TileBoard : MonoBehaviour
 {
@@ -24,11 +26,18 @@ public class TileBoard : MonoBehaviour
     private PlayerController playerInput;
     private Vector2 controllerMovement;
 
+    private EmotionDisplay _emotionDisplay;
+
     private void Awake()
     {
         grid = GetComponentInChildren<TileGrid>();
         tiles = new List<Tile>();
         playerInput = new PlayerController();
+    }
+
+    private void Start()
+    {
+        _emotionDisplay = GetComponent<EmotionDisplay>();  
     }
 
     private void Update()
@@ -156,6 +165,11 @@ public class TileBoard : MonoBehaviour
 
         b.SetState(tileStates[index], number);
         gameManager.IncreaseScore(number);
+
+        if (number >= 32)
+        {
+            _emotionDisplay.ShowNextEmotion();
+        }
     }
 
     public void CreateTile()

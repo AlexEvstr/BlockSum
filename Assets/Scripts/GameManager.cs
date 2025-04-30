@@ -10,8 +10,10 @@ public class GameManager : MonoBehaviour
     public CanvasGroup gameOver;
 
     public TextMeshProUGUI currentScoreText;
-
     public TextMeshProUGUI highScoreText;
+
+    public TextMeshProUGUI gameoverCurrentScoreText;
+    public TextMeshProUGUI gameoverHighScoreText;
 
     public int score;
 
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
     {
         SetScore(0);
         highScoreText.text = LoadHighScore().ToString();
+        gameoverHighScoreText.text = LoadHighScore().ToString();
 
         gameOver.alpha = 0.0f;
         gameOver.interactable = false;
@@ -78,6 +81,7 @@ public class GameManager : MonoBehaviour
         // Set score and update the currentScoreText
         this.score = score;
         currentScoreText.text = this.score.ToString();
+        gameoverCurrentScoreText.text = this.score.ToString();
 
         // Call saveHighScore to see if score needs to update
         SaveHighScore();
@@ -95,6 +99,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("highScore", score);
             highScoreText.text = score.ToString();
+            gameoverHighScoreText.text = score.ToString();
         }
     }
 
@@ -102,11 +107,5 @@ public class GameManager : MonoBehaviour
     private int LoadHighScore()
     {
         return PlayerPrefs.GetInt("highScore", 0);
-    }
-
-    // Used to quit game
-    public void QuitGame()
-    {
-        Application.Quit();
     }
 }
