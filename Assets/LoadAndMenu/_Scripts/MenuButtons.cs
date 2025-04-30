@@ -7,18 +7,19 @@ public class MenuButtons : MonoBehaviour
     [SerializeField] private GameObject _leadersWindow;
     [SerializeField] private GameObject _settingsWindow;
     [SerializeField] private GameObject _howToPlayWindow;
+    [SerializeField] private GameObject _exitWindow;
 
     private void Start()
     {
         Time.timeScale = 1;
     }
 
-    public void ClickPlayBtn()
+    public void ClickOpenLeadersBtn()
     {
         StartCoroutine(SwitchWindows(_menuWindow, false, _leadersWindow, true));
     }
 
-    public void ClickCloseLevelsWindow()
+    public void ClickCloseLeaderssWindow()
     {
         StartCoroutine(SwitchWindows(_leadersWindow, false, _menuWindow, true));
     } 
@@ -41,6 +42,25 @@ public class MenuButtons : MonoBehaviour
     public void CloseHowToPlay()
     {
         StartCoroutine(SwitchWindows(_howToPlayWindow, false, _menuWindow, true));
+    }
+
+    public void OpenExitWindow()
+    {
+        StartCoroutine(SwitchWindows(_menuWindow, false, _exitWindow, true));
+    }
+
+    public void CloseExitWindow()
+    {
+        StartCoroutine(SwitchWindows(_exitWindow, false, _menuWindow, true));
+    }
+
+    public void ExitApp()
+    {
+#if UNITY_EDITOR
+    UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_ANDROID
+        Application.Quit();
+#endif
     }
 
     private IEnumerator SwitchWindows(GameObject toDisable, bool disableState, GameObject toEnable, bool enableState)
