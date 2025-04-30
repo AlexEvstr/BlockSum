@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TileBoard : MonoBehaviour
 {
@@ -27,6 +25,7 @@ public class TileBoard : MonoBehaviour
     private Vector2 controllerMovement;
 
     private EmotionDisplay _emotionDisplay;
+    [SerializeField] private GameAudioManager _gameAudioManager;
 
     private void Awake()
     {
@@ -93,7 +92,7 @@ public class TileBoard : MonoBehaviour
     }
 
     private void MoveTiles(Vector2Int direction, int startX, int incrementX, int startY, int incrementY)
-    {
+    { 
         bool changed = false;
 
         for (int x = startX; x >= 0 && x < grid.width; x += incrementX)
@@ -111,6 +110,7 @@ public class TileBoard : MonoBehaviour
 
         if (changed)
         {
+            _gameAudioManager.PlayMoveSound();
             StartCoroutine(WaitForChanges());
         }
     }
@@ -165,10 +165,11 @@ public class TileBoard : MonoBehaviour
 
         b.SetState(tileStates[index], number);
         gameManager.IncreaseScore(number);
-
+        _gameAudioManager.PlayMergeSound();
         if (number >= 32)
         {
             _emotionDisplay.ShowNextEmotion();
+            _gameAudioManager.PlayEmotionSound();
         }
     }
 

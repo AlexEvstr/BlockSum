@@ -399,7 +399,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6a8831ea763e14f328b293bd9f54348e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d2121cf4b56434553addb36178def390, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -9258,7 +9258,8 @@ MonoBehaviour:
   _soundsSource: {fileID: 2081609277}
   _musicSlider: {fileID: 669444933}
   _soundSlider: {fileID: 364732778}
-  _click: {fileID: 8300000, guid: f9d00e0268ee8405d883138e947b0ab5, type: 3}
+  _click: {fileID: 8300000, guid: 68574c91bd12549a49380603e6d7b290, type: 3}
+  _popup: {fileID: 8300000, guid: 68ecea6ccbe67432faa7190b15757d71, type: 3}
   _vibrationOnButton: {fileID: 2006406360}
   _vibrationOffButton: {fileID: 1981651865}
 --- !u!114 &2020887066

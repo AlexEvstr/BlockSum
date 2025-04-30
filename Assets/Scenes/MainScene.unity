@@ -188,6 +188,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 13250072c4bab4346afb79e52b444051, type: 2}
   - {fileID: 11400000, guid: 1bfd6edab79e7ee4d9b496695f4aba6f, type: 2}
   - {fileID: 11400000, guid: 4c1d3fee63bcd8044a36cce37e6c08be, type: 2}
+  _gameAudioManager: {fileID: 1396264860}
 --- !u!114 &11189597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3442,6 +3443,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1396264860}
+        m_TargetAssemblyTypeName: GameAudioManager, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1078002855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3953,6 +3966,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2113543660}
   - {fileID: 1846588706}
   - {fileID: 1208400297}
   - {fileID: 1909633818}
@@ -3960,8 +3974,8 @@ RectTransform:
   - {fileID: 11189595}
   - {fileID: 1201672854}
   - {fileID: 1470526750}
-  - {fileID: 1169295436}
   - {fileID: 2009936768}
+  - {fileID: 1169295436}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4444,13 +4458,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1396264860}
+        m_TargetAssemblyTypeName: GameAudioManager, Assembly-CSharp
+        m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5575,13 +5589,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a3d18b0c1e2b471282381a80745f7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _click: {fileID: 0}
-  _minusLife: {fileID: 0}
-  _letterSound: {fileID: 0}
-  _win: {fileID: 0}
-  _lose: {fileID: 0}
-  _musicSource: {fileID: 0}
-  _soundSource: {fileID: 0}
+  _click: {fileID: 8300000, guid: 68574c91bd12549a49380603e6d7b290, type: 3}
+  _move: {fileID: 8300000, guid: 4a6cfcc85a6f644ed8312c7e13d54736, type: 3}
+  _merge: {fileID: 8300000, guid: 3657f8646ce1647d3be954ed8fff6056, type: 3}
+  _finish: {fileID: 8300000, guid: 19beb6a61d57b46d5b5be20f14bcf0f3, type: 3}
+  _emotion: {fileID: 8300000, guid: e8aff9f9ed3f34fb48e4decb7a0adc73, type: 3}
+  _musicSource: {fileID: 1938160250}
+  _soundSource: {fileID: 238968024}
 --- !u!1 &1400207462
 GameObject:
   m_ObjectHideFlags: 0
@@ -6036,13 +6050,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1396264860}
+        m_TargetAssemblyTypeName: GameAudioManager, Assembly-CSharp
+        m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6601,9 +6615,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonScaler, Assembly-CSharp
-        m_MethodName: ScaleCallingButton
+      - m_Target: {fileID: 1396264860}
+        m_TargetAssemblyTypeName: GameAudioManager, Assembly-CSharp
+        m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7329,6 +7343,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1396264860}
+        m_TargetAssemblyTypeName: GameAudioManager, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1757255008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7732,8 +7758,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2113543660}
+  m_Children: []
   m_Father: {fileID: 1171432011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -8237,6 +8262,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1396264860}
+        m_TargetAssemblyTypeName: GameAudioManager, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1913017400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8513,7 +8550,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: fafb26d475a144fcfa5e67482800a29b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -9447,12 +9484,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1846588706}
+  m_Father: {fileID: 1171432011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -790.0001}
-  m_SizeDelta: {x: 378.8667, y: 1968.3679}
+  m_AnchoredPosition: {x: 0, y: -0.00012207031}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2113543661
 MonoBehaviour:

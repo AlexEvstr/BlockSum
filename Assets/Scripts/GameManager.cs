@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
     public TileBoard board;
 
     public CanvasGroup gameOver;
@@ -19,12 +18,14 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameoverHighScoreText;
 
     [SerializeField] private GameObject _leadersWindow;
+    private GameAudioManager _gameAudioManager;
 
     public int score;
 
     void Start()
     {
         NewGame();
+        _gameAudioManager = GetComponent<GameAudioManager>();
     }
 
     public void NewGame()
@@ -49,36 +50,30 @@ public class GameManager : MonoBehaviour
         board.enabled = false;
         gameOver.interactable = true;
         gameOver.blocksRaycasts = true;
+        _gameAudioManager.PlayFinishSound();
         StartCoroutine(FadeGameOver(gameOver, 1.0f, 1.0f));
     }
 
     private IEnumerator FadeGameOver(CanvasGroup canvasGroup, float to, float delay)
     {
-        // Delay fade by delay seconds
         yield return new WaitForSeconds(delay);
 
-        // Set up variables for lerp animation
         float elapsed = 0.0f;
         float duration = 0.5f;
         float from = canvasGroup.alpha;
 
-        // Keep shifting while the time has not surpassed the duration
         while (elapsed < duration)
         {
-            // Change the opacity of canvasGroup by interpolation by elapsed / duration
             canvasGroup.alpha = Mathf.Lerp(from, to, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        // Set the final position of the canvasGroup
         canvasGroup.alpha = to;
     }
 
-    // Used to increase score
     public void IncreaseScore(int points)
     {
-        // set the score by addint points to it
         SetScore(score + points);
     }
 
@@ -92,33 +87,25 @@ public class GameManager : MonoBehaviour
         int best = PlayerPrefs.GetInt("BestScore", 0);
         if (this.score > best)
         {
-            // Обновляем UI
             highScoreText.text = this.score.ToString();
             gameoverHighScoreText.text = this.score.ToString();
 
-            // Сохраняем как новый лучший
             PlayerPrefs.SetInt("BestScore", this.score);
             PlayerPrefs.Save();
         }
     }
 
-
-
     private void SaveHighScore(int finalScore)
     {
         List<(int score, string date)> topScores = LoadTopScores();
 
-        // Добавляем финальный результат
         topScores.Add((finalScore, DateTime.Now.ToString("dd.MM.yyyy")));
 
-        // Сортируем по убыванию
         topScores.Sort((a, b) => b.score.CompareTo(a.score));
 
-        // Обрезаем до топ-5
         if (topScores.Count > 5)
             topScores.RemoveRange(5, topScores.Count - 5);
 
-        // Сохраняем
         for (int i = 0; i < topScores.Count; i++)
         {
             PlayerPrefs.SetInt($"highScore_{i}", topScores[i].score);
@@ -127,7 +114,6 @@ public class GameManager : MonoBehaviour
 
         PlayerPrefs.Save();
 
-        // ✅ Обновляем UI, если новый рекорд
         int bestSaved = PlayerPrefs.GetInt("highScore_0", 0);
         if (finalScore >= bestSaved)
         {
@@ -135,8 +121,6 @@ public class GameManager : MonoBehaviour
             gameoverHighScoreText.text = finalScore.ToString();
         }
     }
-
-
 
     private List<(int score, string date)> LoadTopScores()
     {

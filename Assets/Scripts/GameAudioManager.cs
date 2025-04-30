@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameAudioManager : MonoBehaviour
@@ -11,7 +9,6 @@ public class GameAudioManager : MonoBehaviour
     [SerializeField] private AudioClip _emotion;
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _soundSource;
-
 
     public static bool isVibrationEnabled;
 
@@ -36,7 +33,7 @@ public class GameAudioManager : MonoBehaviour
     {
         _soundSource.PlayOneShot(_merge);
         if (isVibrationEnabled)
-            Vibration.VibratePeek();
+            Vibration.VibratePop();
     }
 
     public void PlayMoveSound()
@@ -48,6 +45,7 @@ public class GameAudioManager : MonoBehaviour
 
     public void PlayFinishSound()
     {
+        _musicSource.Stop();
         _soundSource.PlayOneShot(_finish);
         if (isVibrationEnabled)
             Vibration.Vibrate();
@@ -57,6 +55,6 @@ public class GameAudioManager : MonoBehaviour
     {
         _soundSource.PlayOneShot(_emotion);
         if (isVibrationEnabled)
-            Vibration.VibrateNope();
+            Vibration.VibratePeek();
     }
 }

@@ -34,7 +34,6 @@ public class EmotionDisplay : MonoBehaviour
 
     private IEnumerator ShowEmotion()
     {
-        // Установка текущего спрайта и текста
         _emotionImage.sprite = _emotionSprites[_currentEmotionIndex % _emotionSprites.Length];
         _emotionBaseText.text = _allEmotionTexts[_currentEmotionIndex % _allEmotionTexts.Length];
 

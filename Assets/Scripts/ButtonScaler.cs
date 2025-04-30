@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class ButtonScaler : MonoBehaviour
 {
-    public float scaleMultiplier = 0.5f; // уменьшение
+    public float scaleMultiplier = 0.5f;
     public float animationDuration = 0.1f;
 
     public void ScaleCallingButton()
@@ -21,7 +21,6 @@ public class ButtonScaler : MonoBehaviour
         Vector3 targetScale = originalScale * scaleMultiplier;
         float timer = 0f;
 
-        // Уменьшение
         while (timer < animationDuration)
         {
             buttonTransform.localScale = Vector3.Lerp(originalScale, targetScale, timer / animationDuration);
@@ -30,7 +29,6 @@ public class ButtonScaler : MonoBehaviour
         }
         buttonTransform.localScale = targetScale;
 
-        // Возврат
         timer = 0f;
         while (timer < animationDuration)
         {
