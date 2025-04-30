@@ -5,10 +5,10 @@ using UnityEngine;
 public class GameAudioManager : MonoBehaviour
 {
     [SerializeField] private AudioClip _click;
-    [SerializeField] private AudioClip _minusLife;
-    [SerializeField] private AudioClip _letterSound;
-    [SerializeField] private AudioClip _win;
-    [SerializeField] private AudioClip _lose;
+    [SerializeField] private AudioClip _move;
+    [SerializeField] private AudioClip _merge;
+    [SerializeField] private AudioClip _finish;
+    [SerializeField] private AudioClip _emotion;
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _soundSource;
 
@@ -32,30 +32,30 @@ public class GameAudioManager : MonoBehaviour
             Vibration.VibratePop();
     }
 
-    public void PlayStarSound()
+    public void PlayMergeSound()
     {
-        _soundSource.PlayOneShot(_letterSound);
+        _soundSource.PlayOneShot(_merge);
         if (isVibrationEnabled)
             Vibration.VibratePeek();
     }
 
-    public void PlayMinusLife()
+    public void PlayMoveSound()
     {
-        _soundSource.PlayOneShot(_minusLife);
+        _soundSource.PlayOneShot(_move);
         if (isVibrationEnabled)
             Vibration.VibratePeek();
     }
 
-    public void PlayWin()
+    public void PlayFinishSound()
     {
-        _soundSource.PlayOneShot(_win);
+        _soundSource.PlayOneShot(_finish);
         if (isVibrationEnabled)
             Vibration.Vibrate();
     }
 
-    public void PlayLose()
+    public void PlayEmotionSound()
     {
-        _soundSource.PlayOneShot(_lose);
+        _soundSource.PlayOneShot(_emotion);
         if (isVibrationEnabled)
             Vibration.VibrateNope();
     }
