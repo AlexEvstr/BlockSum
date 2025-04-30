@@ -1,30 +1,27 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class WelcomeBoard : MonoBehaviour
 {
-    [SerializeField] private Image _backgroundImage;
-    [SerializeField] private Sprite[] _backgroundSprites;
-    [SerializeField] private SpriteRenderer _plane;
-    [SerializeField] private Sprite[] _planeSprites;
-
-    private void Awake()
-    {
-        Screen.orientation = ScreenOrientation.Portrait;
-        _backgroundImage.sprite = _backgroundSprites[PlayerPrefs.GetInt("selectedBackgroundIndex", 0)];
-        _plane.sprite = _planeSprites[PlayerPrefs.GetInt("selectedAirplaneIndex", 0)];
-    }
+    [SerializeField] private GameObject _loadBar;
 
     private void Start()
     {
-        StartCoroutine(LoadMenuScene());
+        StartCoroutine(ActivateChildrenSequentially());
     }
 
-    private IEnumerator LoadMenuScene()
+    private IEnumerator ActivateChildrenSequentially()
     {
-        yield return new WaitForSeconds(3.0f);
+        int childCount = _loadBar.transform.childCount;
+        float delay = 3.0f / childCount;
+
+        for (int i = 0; i < childCount; i++)
+        {
+            _loadBar.transform.GetChild(i).gameObject.SetActive(true);
+            yield return new WaitForSeconds(delay);
+        }
+        //yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("MenuScene");
     }
 }
